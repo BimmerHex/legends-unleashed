@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 // BaseView sınıfından türetilen SettingsView sınıfı
@@ -27,6 +28,7 @@ public class SettingsView : BaseView
     // "Background/Close" butonuna tıklandığında çağrılan metot
     private void OnCloseButton() {        
         GameApp.ViewManager.Close(ViewId); // View'ı kapatma işlevi çağrılır
+        Debug.Log("SettingsView görünümü kapandı.");
     }
 
     // "Background/Content/Mute" toggle değerininin değiştirildiğinde çağrılan metot

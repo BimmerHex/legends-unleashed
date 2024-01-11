@@ -1,18 +1,21 @@
+// Oyun sahnesinin ana script'i
 using UnityEngine;
 
-// Oyun sahnesinin ana script'i
 public class GameScene : MonoBehaviour
 {
     public Texture2D mouseTexture; // Fare imleci texture'ını tutan değişken
-
     private float dt; // Delta time değerini tutan değişken
     private bool isLoaded = false; // Sahnenin yüklenip yüklenmediğini kontrol eden değişken
 
     // Awake metodu, sahne başladığında çalışır
-    private void Awake() {
-        if (isLoaded) {
+    private void Awake()
+    {
+        if (isLoaded)
+        {
             Destroy(gameObject);
-        } else {
+        }
+        else
+        {
             isLoaded = true;
             DontDestroyOnLoad(gameObject);
 
@@ -24,10 +27,23 @@ public class GameScene : MonoBehaviour
     }
 
     // Start metodu, Awake metodu tamamlandıktan sonra çalışır
-    private void Start() {
+    private void Start()
+    {
         // Fare imlecini belirtilen texture ile değiştir
         // Cursor.SetCursor(mouseTexture, Vector2.zero, CursorMode.Auto);
         // Debug.Log("Cursor sınıfındaki SetCursor metodu çalıştırıldı ve mouse imleci değiştirildi.");
+
+        RegisterConfigs();
+        GameApp.ConfigManager.LoadAllConfigs();
+
+        string tempTxtFileName = "Scene";
+        int tempDataId = 1001;
+
+        ConfigData tempData = GameApp.ConfigManager.GetConfigData(tempTxtFileName);
+        string name = tempData.GetDataById(tempDataId)["Name"];
+        string sceneName = tempData.GetDataById(tempDataId)["SceneName"];
+        string description = tempData.GetDataById(tempDataId)["Description"];
+        Debug.Log($"{tempTxtFileName}.txt içerisindeki {tempDataId} ID'sine sahip verinin değerleri yazıldı. Name Değeri: {name} - SceneName Değeri: {sceneName} - Description Değeri: {description}");
 
         // Arkaplan müziğini çalmak için SoundManager üzerinden PlayBGM metodu çağrılıyor
         Debug.Log("SoundManager sınıfındaki PlayBGM metodu çağrılıyor.");
@@ -39,22 +55,30 @@ public class GameScene : MonoBehaviour
     }
 
     // Controller'ları kaydetmek için kullanılan metot
-    private void RegisterModule() {
+    private void RegisterModule()
+    {
         GameApp.ControllerManager.Register(ControllerType.GameUI, new GameUIController());
         GameApp.ControllerManager.Register(ControllerType.Game, new GameController());
         GameApp.ControllerManager.Register(ControllerType.Loading, new LoadingController());
     }
 
     // Modülleri başlatmak için kullanılan metot
-    private void InitModule() {
+    private void InitModule()
+    {
         GameApp.ControllerManager.InitAllModules();
     }
 
+    // ConfigManager'a konfigürasyon dosyalarını kaydetmek için kullanılan metot
+    private void RegisterConfigs()
+    {
+        GameApp.ConfigManager.Register("Scene", new ConfigData("Scene"));
+    }
+
     // Update metodu, her bir frame'de çağrılır
-    private void Update() {
+    private void Update()
+    {
         // Zaman aralığını güncelle
         dt = Time.deltaTime;
-        Debug.Log("GameApp sınıfının virtual olan Update metodu çağrılıyor.");
 
         // GameApp singleton'ını güncelle ve bir log mesajı yazdır
         GameApp.Instance.Update(dt);

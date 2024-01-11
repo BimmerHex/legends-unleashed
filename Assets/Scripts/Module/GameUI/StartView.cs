@@ -21,6 +21,7 @@ public class StartView : BaseView
     // "Start" butonuna tıklandığında çağrılan metot
     private void OnStartGameButton() {
         GameApp.ViewManager.Close(ViewId);
+        Debug.Log("StartView görünümü kapandı.");
         
         LoadingModel loadingModel = new LoadingModel();
         loadingModel.sceneName = "Level_001";

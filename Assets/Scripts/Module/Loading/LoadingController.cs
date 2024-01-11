@@ -38,10 +38,11 @@ public class LoadingController : BaseController
         GameApp.ViewManager.Open(ViewType.LoadingView);
 
         // Asenkron operasyonu kullanarak sahneyi yükler
-        asyncOperation = SceneManager.LoadSceneAsync(loadingModel.sceneName); 
+        asyncOperation = SceneManager.LoadSceneAsync(loadingModel.sceneName);
 
         // Yükleme tamamlandığında çağrılacak metodu belirler
         asyncOperation.completed += OnLoadedEndCallback;
+        Debug.Log("LoadingView görünümü açıldı.");
     }
 
     // Yükleme tamamlandığında çağrılan metot
@@ -54,5 +55,6 @@ public class LoadingController : BaseController
 
         // LoadingView'i kapatır
         GameApp.ViewManager.Close((int)ViewType.LoadingView);
+        Debug.Log("LoadingView görünümü kapandı.");
     }
 }

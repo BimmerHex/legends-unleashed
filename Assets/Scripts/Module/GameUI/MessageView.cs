@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 // Mesajın temel bilgilerini içeren sınıf
@@ -47,5 +48,6 @@ public class MessageView : BaseView
         messageInfo.cancelCallBack?.Invoke();
         // View'ı kapatma işlevi çağrılır
         GameApp.ViewManager.Close(ViewId);
+        Debug.Log("MessageView görünümü kapandı.");
     }
 }
