@@ -6,7 +6,7 @@
 
 ## 👉 If you want, you can join my discord!
 <p align="center">
-    <a href="https://discord.gg/EEP7JjX4Ka"><img src="https://cdn.discordapp.com/attachments/1165707821212504114/1194713093134098462/logo_001.png" alt="Vintage Game Studio"></a>
+    <a href="https://discord.gg/EEP7JjX4Ka"><img src="https://cdn.discordapp.com/attachments/1165707821212504114/1194858297451364413/2.jpg" alt="BimmerHex"></a>
 </p>
 
 ## 👨‍💻 My GitHub Stats
