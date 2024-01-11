@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class StartView : BaseView
 {
     // Awake metodu üzerine yazılmış özel bir metot
-    private protected override void OnAwake()
-    {
+    private protected override void OnAwake() {
         // BaseView sınıfının OnAwake metodunu çağır
         base.OnAwake();
         
@@ -24,8 +23,12 @@ public class StartView : BaseView
         Debug.Log("StartView görünümü kapandı.");
         
         LoadingModel loadingModel = new LoadingModel();
-        loadingModel.sceneName = "Level_001";
-        BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingScene, loadingModel);   
+        loadingModel.sceneName = "Map";
+        loadingModel.sceneCallback = delegate () {
+            BaseController.ApplyControllerFunc(ControllerType.Level, Defines.OpenSelectLevelView);
+        };
+
+        BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingSceneView, loadingModel);
     }
 
     // "Settings" butonuna tıklandığında çağrılan metot

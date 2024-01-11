@@ -22,12 +22,12 @@ public class LoadingController : BaseController
     // Olayları başlatan metot
     public override void InitModuleEvent()
     {
-        // OpenLoadingScene fonksiyonunu Defines.OpenLoadingScene olayına kaydeder
-        RegisterFunc(Defines.OpenLoadingScene, OpenLoadingScene);
+        // OpenLoadingSceneView fonksiyonunu Defines.OpenLoadingSceneView olayına kaydeder
+        RegisterFunc(Defines.OpenLoadingSceneView, OpenLoadingSceneView);
     }
 
     // Belirtilen bir sahneyi yükleyen metot
-    private void OpenLoadingScene(System.Object[] args) {
+    private void OpenLoadingSceneView(System.Object[] args) {
         // Gelen argümanları LoadingModel tipine dönüştürerek loadingModel değişkenine atar
         LoadingModel loadingModel = args[0] as LoadingModel;
 

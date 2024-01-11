@@ -3,5 +3,6 @@ public enum ControllerType
 {
     GameUI,
     Game,
-    Loading
+    Loading,
+    Level
 }

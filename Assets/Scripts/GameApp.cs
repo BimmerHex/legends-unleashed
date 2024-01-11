@@ -7,9 +7,12 @@ public class GameApp : Singleton<GameApp>
     public static ControllerManager ControllerManager; // Controller yöneticisi nesnesi
     public static ViewManager ViewManager; // Görünüm yöneticisi nesnesi
     public static ConfigManager ConfigManager; // Yapılandırma yöneticisi nesnesi
+    public static CameraManager CameraManager; // Kamera yöneticisi nesnesi
 
     // Başlatma işlemleri için kullanılan override edilmiş metot
     public override void Init() {
+        CameraManager = new CameraManager(); // Kamera yöneticisi başlat
+        Debug.Log("GameApp sınıfının Init metodunda CameraManager sınıfı başlatıldı.");
         SoundManager = new SoundManager(); // Ses yöneticisini başlat
         Debug.Log("GameApp sınıfının Init metodunda SoundManager sınıfı başlatıldı.");
         ConfigManager = new ConfigManager(); // Yapılandırma yöneticisini başlat
