@@ -12,6 +12,8 @@ public class SelectLevelView : BaseView
         base.OnStart();
         // "Close" butonuna tıklanma olayına dinleyici eklenir ve OnCloseButton metodu atanır
         Find<Button>("Close").onClick.AddListener(OnCloseButton);
+        // "Challenge" butonuna tıklanma olayına dinleyici eklenir ve OnChallengeButton metodu atanır
+        Find<Button>("Level/Challenge").onClick.AddListener(OnChallengeButton);
     }
 
     // "Close" butonuna tıklandığında çağrılan metot
@@ -43,5 +45,20 @@ public class SelectLevelView : BaseView
 
     public void HideLevelDescription() {
         Find("Level").SetActive(false);
+    }
+
+    private void OnChallengeButton() {
+        GameApp.ViewManager.Close(ViewId);
+        Debug.Log("SelectLevelView görünümü kapandı.");
+
+        GameApp.CameraManager.ResetPos();
+        
+        LoadingModel loadingModel = new LoadingModel();
+        loadingModel.sceneName = BaseController.GetModel<LevelModel>().currentLevel.sceneName;
+        loadingModel.sceneCallback = delegate () {
+            
+        };
+
+        BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingSceneView, loadingModel);
     }
 }

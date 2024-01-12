@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 6518126783164461683}
   - component: {fileID: 8072060474893595874}
   m_Layer: 5
-  m_Name: Fight
+  m_Name: Challenge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

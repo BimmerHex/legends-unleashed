@@ -10,6 +10,7 @@ public class CameraManager
     public CameraManager()
     {
         cameraTransform = Camera.main.transform;
+        previousPosition = cameraTransform.transform.position;
     }
 
     // Kameranın pozisyonunu belirli bir pozisyona ayarlayan metot
