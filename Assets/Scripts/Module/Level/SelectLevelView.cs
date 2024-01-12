@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// SelectLevelView sınıfı, seviye seçim ekranının kontrolünü sağlar.
+// Seviye seçim ekranının kontrolünü sağlayan SelectLevelView sınıfı
 public class SelectLevelView : BaseView
 {
     // Start metodu üzerine yazılmış özel bir metot
@@ -36,29 +36,44 @@ public class SelectLevelView : BaseView
         BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingSceneView, loadingModel);
     }
 
-    public void ShowLevelDescription() {
+    // Seviye açıklamasını gösteren metot
+    public void ShowLevelDescription()
+    {
+        // "Level" objesini etkinleştir
         Find("Level").SetActive(true);
+        // Şu anki seviyenin verilerini al
         LevelData currentLevelData = BaseController.GetModel<LevelModel>().currentLevel;
+        // Seviye adını ve açıklamayı ekrana yazdır
         Find<TextMeshProUGUI>("Level/Level Name/Text").text = currentLevelData.name;
         Find<TextMeshProUGUI>("Level/Description/Text").text = currentLevelData.description;
     }
 
-    public void HideLevelDescription() {
+    // Seviye açıklamasını gizleyen metot
+    public void HideLevelDescription()
+    {
+        // "Level" objesini devre dışı bırak
         Find("Level").SetActive(false);
     }
 
-    private void OnChallengeButton() {
+    // "Challenge" butonuna tıklandığında çağrılan metot
+    private void OnChallengeButton()
+    {
+        // Seviye seçim ekranını kapat
         GameApp.ViewManager.Close(ViewId);
         Debug.Log("SelectLevelView görünümü kapandı.");
 
+        // Kameranın pozisyonunu sıfırla
         GameApp.CameraManager.ResetPos();
-        
+
+        // Yeni bir sahneyi yüklemek için LoadingModel oluştur
         LoadingModel loadingModel = new LoadingModel();
         loadingModel.sceneName = BaseController.GetModel<LevelModel>().currentLevel.sceneName;
-        loadingModel.sceneCallback = delegate () {
-            
+        loadingModel.sceneCallback = delegate ()
+        {
+            // Boş callback, gerekirse doldurulabilir
         };
 
+        // LoadingController üzerinden yeni sahneyi yükleme işlemi
         BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingSceneView, loadingModel);
     }
 }

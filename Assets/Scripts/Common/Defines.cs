@@ -7,6 +7,6 @@ public static class Defines
     public static readonly string OpenSelectLevelView = "OpenSelectLevelView"; // OpenSelectLevelView'ı açma event'i
     public static readonly string OpenLoadingSceneView = "OpenLoadingSceneView"; // OpenLoadingSceneView'ı açma event'i
 
-    public static readonly string ShowLevelDescriptionEvent = "ShowLevelDescriptionEvent";
-    public static readonly string HideLevelDescriptionEvent = "HideLevelDescriptionEvent";
+    public static readonly string ShowLevelDescriptionEvent = "ShowLevelDescriptionEvent"; // Seviye açıklamasını gösterme event'i
+    public static readonly string HideLevelDescriptionEvent = "HideLevelDescriptionEvent"; // Seviye açıklamasını gizleme event'i
 }

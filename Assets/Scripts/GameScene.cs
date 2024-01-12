@@ -1,6 +1,6 @@
-// Oyun sahnesinin ana script'i
 using UnityEngine;
 
+// Oyun sahnesinin ana script'i
 public class GameScene : MonoBehaviour
 {
     public Texture2D mouseTexture; // Fare imleci texture'ını tutan değişken
