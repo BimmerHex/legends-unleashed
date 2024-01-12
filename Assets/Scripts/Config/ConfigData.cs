@@ -23,17 +23,17 @@ public class ConfigData
     // Metin dosyasındaki verileri yüklemek için kullanılan metot
     public void Load(string txtFile)
     {
-        string[] data = txtFile.Split("\n");
-        string[] title = data[0].Trim().Split(",");
+        string[] datas = txtFile.Split("\n");
+        string[] titles = datas[0].Trim().Split(",");
 
-        for (int i = 1; i < data.Length; i++)
+        for (int i = 1; i < datas.Length; i++)
         {
-            string[] tempArray = data[i].Trim().Split(',');
+            string[] tempArray = datas[i].Trim().Split(',');
             Dictionary<string, string> tempData = new Dictionary<string, string>();
 
             for (int j = 0; j < tempArray.Length; j++)
             {
-                tempData.Add(title[j], tempArray[j]);
+                tempData.Add(titles[j], tempArray[j]);
             }
 
             _datas.Add(int.Parse(tempData["Id"]), tempData);

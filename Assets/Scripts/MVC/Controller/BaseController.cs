@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Temel Controller sınıfı
@@ -11,7 +10,7 @@ public class BaseController
 
     // BaseController'ın yapıcı metodu
     public BaseController() {
-        _message = new Dictionary<string, Action<System.Object[]>>();
+        _message = new Dictionary<string, Action<object[]>>();
     }
 
     // BaseController'ı başlatmak için kullanılan sanal metot

@@ -36,15 +36,6 @@ public class GameScene : MonoBehaviour
         RegisterConfigs();
         GameApp.ConfigManager.LoadAllConfigs();
 
-        string tempTxtFileName = "Level";
-        int tempDataId = 1001;
-
-        ConfigData tempData = GameApp.ConfigManager.GetConfigData(tempTxtFileName);
-        string name = tempData.GetDataById(tempDataId)["Name"];
-        string sceneName = tempData.GetDataById(tempDataId)["SceneName"];
-        string description = tempData.GetDataById(tempDataId)["Description"];
-        Debug.Log($"{tempTxtFileName}.txt içerisindeki {tempDataId} ID'sine sahip verinin değerleri yazıldı. Name Değeri: {name} - SceneName Değeri: {sceneName} - Description Değeri: {description}");
-
         // Arkaplan müziğini çalmak için SoundManager üzerinden PlayBGM metodu çağrılıyor
         Debug.Log("SoundManager sınıfındaki PlayBGM metodu çağrılıyor.");
         GameApp.SoundManager.PlayBGM("Background");

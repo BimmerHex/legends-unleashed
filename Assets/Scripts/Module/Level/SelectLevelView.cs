@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,9 @@ public class SelectLevelView : BaseView
 
     public void ShowLevelDescription() {
         Find("Level").SetActive(true);
+        LevelData currentLevelData = BaseController.GetModel<LevelModel>().currentLevel;
+        Find<TextMeshProUGUI>("Level/Level Name/Text").text = currentLevelData.name;
+        Find<TextMeshProUGUI>("Level/Description/Text").text = currentLevelData.description;
     }
 
     public void HideLevelDescription() {

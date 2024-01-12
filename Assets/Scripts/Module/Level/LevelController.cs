@@ -6,6 +6,8 @@ public class LevelController : BaseController
     // LevelController sınıfının yapıcı metodu
     public LevelController() : base()
     {
+        SetModel(new LevelModel());
+
         // Seviye seçim ekranını kayıt et
         GameApp.ViewManager.Register(ViewType.SelectLevelView, new ViewInfo()
         {
@@ -17,6 +19,11 @@ public class LevelController : BaseController
         // Modül event'lerini başlat
         InitModuleEvent();
         InitGlobalEvent();
+    }
+
+    public override void Init()
+    {
+        _baseModel.Init();
     }
 
     // Modül event'lerini başlatan metot
@@ -38,6 +45,9 @@ public class LevelController : BaseController
     }
 
     private void OnShowLevelDescriptionCallback(System.Object arg) {
+        Debug.Log($"Level ID: {arg.ToString()}");
+        LevelModel levelModel = GetModel<LevelModel>();
+        levelModel.currentLevel = levelModel.GetLevel(int.Parse(arg.ToString()));
         GameApp.ViewManager.GetView<SelectLevelView>((int)ViewType.SelectLevelView).ShowLevelDescription();
     }
 
