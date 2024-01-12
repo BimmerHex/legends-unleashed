@@ -36,7 +36,7 @@ public class GameScene : MonoBehaviour
         RegisterConfigs();
         GameApp.ConfigManager.LoadAllConfigs();
 
-        string tempTxtFileName = "Scene";
+        string tempTxtFileName = "Level";
         int tempDataId = 1001;
 
         ConfigData tempData = GameApp.ConfigManager.GetConfigData(tempTxtFileName);
@@ -72,7 +72,7 @@ public class GameScene : MonoBehaviour
     // ConfigManager'a konfigürasyon dosyalarını kaydetmek için kullanılan metot
     private void RegisterConfigs()
     {
-        GameApp.ConfigManager.Register("Scene", new ConfigData("Scene"));
+        GameApp.ConfigManager.Register("Level", new ConfigData("Level"));
     }
 
     // Update metodu, her bir frame'de çağrılır

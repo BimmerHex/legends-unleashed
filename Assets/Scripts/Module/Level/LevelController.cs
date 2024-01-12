@@ -16,12 +16,33 @@ public class LevelController : BaseController
 
         // Modül event'lerini başlat
         InitModuleEvent();
+        InitGlobalEvent();
     }
 
     // Modül event'lerini başlatan metot
     public override void InitModuleEvent()
     {
         RegisterFunc(Defines.OpenSelectLevelView, OpenSelectLevelView);
+    }
+
+    public override void InitGlobalEvent()
+    {
+        GameApp.MessageCenter.AddEvent(Defines.ShowLevelDescriptionEvent, OnShowLevelDescriptionCallback);
+        GameApp.MessageCenter.AddEvent(Defines.HideLevelDescriptionEvent, OnHideLevelDescriptionCallback);
+    }
+
+    public override void RemoveGlobalEvent()
+    {
+        GameApp.MessageCenter.RemoveEvent(Defines.ShowLevelDescriptionEvent, OnShowLevelDescriptionCallback);
+        GameApp.MessageCenter.RemoveEvent(Defines.HideLevelDescriptionEvent, OnHideLevelDescriptionCallback);
+    }
+
+    private void OnShowLevelDescriptionCallback(System.Object arg) {
+        GameApp.ViewManager.GetView<SelectLevelView>((int)ViewType.SelectLevelView).ShowLevelDescription();
+    }
+
+    private void OnHideLevelDescriptionCallback(System.Object arg) {
+        GameApp.ViewManager.GetView<SelectLevelView>((int)ViewType.SelectLevelView).HideLevelDescription();
     }
 
     // Seviye seçim ekranını açan metot

@@ -32,4 +32,12 @@ public class SelectLevelView : BaseView
         // LoadingController üzerinden yeni sahneyi yükleme işlemi
         BaseController.ApplyControllerFunc(ControllerType.Loading, Defines.OpenLoadingSceneView, loadingModel);
     }
+
+    public void ShowLevelDescription() {
+        Find("Level").SetActive(true);
+    }
+
+    public void HideLevelDescription() {
+        Find("Level").SetActive(false);
+    }
 }
