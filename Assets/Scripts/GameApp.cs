@@ -8,6 +8,7 @@ public class GameApp : Singleton<GameApp>
     public static ViewManager ViewManager; // Görünüm yöneticisi nesnesi
     public static ConfigManager ConfigManager; // Yapılandırma yöneticisi nesnesi
     public static CameraManager CameraManager; // Kamera yöneticisi nesnesi
+    public static MessageCenter MessageCenter; // İletişim merkezi nesnesi
 
     // Başlatma işlemleri için kullanılan override edilmiş metot
     public override void Init() {
@@ -21,5 +22,7 @@ public class GameApp : Singleton<GameApp>
         Debug.Log("GameApp sınıfının Init metodunda ControllerManager sınıfı başlatıldı.");
         ViewManager = new ViewManager(); // Görünüm yöneticisini başlat
         Debug.Log("GameApp sınıfının Init metodunda ViewManager sınıfı başlatıldı.");
+        MessageCenter = new MessageCenter(); // İletişim merkezi başlat
+        Debug.Log("GameApp sınıfının Init metodunda MessageCenter sınıfı başlatıldı.");
     }
 }
