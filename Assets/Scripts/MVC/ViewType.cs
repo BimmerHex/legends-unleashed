@@ -5,5 +5,6 @@ public enum ViewType
     SettingsView,
     MessageView,
     LoadingView,
-    SelectLevelView
+    SelectLevelView,
+    ChallengeView
 }

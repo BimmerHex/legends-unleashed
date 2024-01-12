@@ -70,7 +70,7 @@ public class SelectLevelView : BaseView
         loadingModel.sceneName = BaseController.GetModel<LevelModel>().currentLevel.sceneName;
         loadingModel.sceneCallback = delegate ()
         {
-            // Boş callback, gerekirse doldurulabilir
+            BaseController.ApplyControllerFunc(ControllerType.Challenge, Defines.OpenChallengeView);
         };
 
         // LoadingController üzerinden yeni sahneyi yükleme işlemi

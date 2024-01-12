@@ -52,6 +52,7 @@ public class GameScene : MonoBehaviour
         GameApp.ControllerManager.Register(ControllerType.Game, new GameController());
         GameApp.ControllerManager.Register(ControllerType.Loading, new LoadingController());
         GameApp.ControllerManager.Register(ControllerType.Level, new LevelController());
+        GameApp.ControllerManager.Register(ControllerType.Challenge, new ChallengeController());
     }
 
     // Modülleri başlatmak için kullanılan metot
