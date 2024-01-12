@@ -50,11 +50,13 @@ public class LoadingController : BaseController
         // Olayı temizler
         asyncOperation.completed -= OnLoadedEndCallback;
 
-        // LoadingModel içindeki sahne geri çağrı metodu (callback) çağrılır
-        GetModel<LoadingModel>().sceneCallback?.Invoke();
+        GameApp.TimerManager.Register(3f, delegate () {
+            // LoadingModel içindeki sahne geri çağrı metodu (callback) çağrılır
+            GetModel<LoadingModel>().sceneCallback?.Invoke();
 
-        // LoadingView'i kapatır
-        GameApp.ViewManager.Close((int)ViewType.LoadingView);
-        Debug.Log("LoadingView görünümü kapandı.");
+            // LoadingView'i kapatır
+            GameApp.ViewManager.Close((int)ViewType.LoadingView);
+            Debug.Log("LoadingView görünümü kapandı.");
+        });        
     }
 }

@@ -9,9 +9,14 @@ public class GameApp : Singleton<GameApp>
     public static ConfigManager ConfigManager; // Yapılandırma yöneticisi nesnesi
     public static CameraManager CameraManager; // Kamera yöneticisi nesnesi
     public static MessageCenter MessageCenter; // İletişim merkezi nesnesi
+    public static TimerManager TimerManager; // Zamanlayıcı yöneticisi nesnesi
 
     // Başlatma işlemleri için kullanılan override edilmiş metot
     public override void Init() {
+        TimerManager = new TimerManager(); // Zamanlayıcı yöneticisini başlat
+        Debug.Log("GameApp sınıfının Init metodunda TimerManager sınıfı başlatıldı.");
+        MessageCenter = new MessageCenter(); // İletişim merkezi başlat
+        Debug.Log("GameApp sınıfının Init metodunda MessageCenter sınıfı başlatıldı.");
         CameraManager = new CameraManager(); // Kamera yöneticisi başlat
         Debug.Log("GameApp sınıfının Init metodunda CameraManager sınıfı başlatıldı.");
         SoundManager = new SoundManager(); // Ses yöneticisini başlat
@@ -22,7 +27,10 @@ public class GameApp : Singleton<GameApp>
         Debug.Log("GameApp sınıfının Init metodunda ControllerManager sınıfı başlatıldı.");
         ViewManager = new ViewManager(); // Görünüm yöneticisini başlat
         Debug.Log("GameApp sınıfının Init metodunda ViewManager sınıfı başlatıldı.");
-        MessageCenter = new MessageCenter(); // İletişim merkezi başlat
-        Debug.Log("GameApp sınıfının Init metodunda MessageCenter sınıfı başlatıldı.");
+    }
+
+    public override void Update(float dt)
+    {
+        TimerManager.OnUpdate(dt); // Zamanlayıcıları güncelle
     }
 }
